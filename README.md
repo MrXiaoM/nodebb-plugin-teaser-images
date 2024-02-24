@@ -1,17 +1,69 @@
-# Quickstart Plugin for NodeBB
+# nodebb-plugin-teaser-images
 
-A starter kit for quickly creating NodeBB plugins. Comes with a pre-setup LESS file, server side JS script with an `action:app.load` hook, and a client-side script. Most plugins need at least one of the above, so this ought to save you some time. For a full list of hooks have a look at our [wiki page](https://github.com/NodeBB/NodeBB/wiki/Hooks), and for more information about creating plugins please visit our [documentation portal](https://docs.nodebb.org/).
+API added `images` list in content. 4 urls limited.
+```json5
+    "teaser": {
+        "pid": 114514,
+        "uid": 1919,
+        "timestamp": 0,
+        "tid": 810,
+        "content": "image1alt image2alt image3alt image4alt",
+        // I added this, so you can add image preview into teaser
+        "images": [
+            "image1url",
+            "image2url",
+            "image3url"
+        ]
+    }
+```
 
-Fork this or copy it, and using your favourite text editor find and replace all instances of `nodebb-plugin-quickstart` with `nodebb-plugin-your-plugins-name`. Change the author's name in the LICENSE and package.json files.
+To add image preview under topic, edit those in template:
 
-## Hello World
+topic_list.tpl
+```html
+					<div class="row">
+						<!-- IF topics.teaser.images.length -->
+						<a href="{config.relative_path}/topic/{topics.slug}">
+							<div class="teaser-images">
+								{{{ each topics.teaser.images }}}
+									<div class="image-container">
+										<img src="{topics.teaser.images}"/>
+									</div>
+								{{{ end }}}
+							</div>
+						</a>
+						<!-- ENDIF topics.teaser.images.length -->
+					</div>
+```
 
-Really simple, just edit `static/lib/main.js` and paste in `console.log('hello world');`, and that's it!
+style
+```css
+.teaser-images {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	margin-bottom: 10px;
 
-## Installation
+	.image-container {
+		width: 33%;
+		height: 180px;
+		justify-content: center;
+		overflow: hidden;
 
-    npm install nodebb-plugin-quickstart
+		img {
+			width: 100%;
+			height: auto;
+			position: relative;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+		}
+	}
+}
+```
 
-## Screenshots
-
-Don't forget to add screenshots!
+![preview](preview.jpg)

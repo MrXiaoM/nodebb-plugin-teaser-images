@@ -1,45 +1,26 @@
 {
-  "name": "nodebb-plugin-quickstart",
-  "version": "0.4.3",
-  "description": "A starter kit for quickly creating NodeBB plugins",
-  "main": "library.js",
+  "name": "nodebb-plugin-teaser-images",
+  "version": "0.1.0",
+  "description": "Add 3 image links into teaser API",
+  "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nodebb/nodebb-plugin-quickstart"
+    "url": "https://github.com/MrXiaoM/nodebb-plugin-teaser-images"
   },
   "keywords": [
     "nodebb",
     "plugin",
-    "quickstart",
-    "shell"
+    "teaser",
+    "image",
+    "api"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nodebb/nodebb-plugin-quickstart/issues"
+    "url": "https://github.com/MrXiaoM/nodebb-plugin-teaser-images/issues"
   },
   "readmeFilename": "README.md",
   "nbbpm": {
-    "compatibility": "^3.2.0"
+    "compatibility": "^2.0.0"
   },
-  "devDependencies": {
-    "@commitlint/cli": "18.6.1",
-    "@commitlint/config-angular": "18.6.1",
-    "eslint": "8.x",
-    "eslint-config-nodebb": "0.2.1",
-    "eslint-plugin-import": "2.x",
-    "husky": "9.0.11",
-    "lint-staged": "15.2.2"
-  }
+  "devDependencies": {}
 }
